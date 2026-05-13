@@ -1,0 +1,4 @@
+.env
+node_modules/
+transcripts/*.log
+.DS_Store

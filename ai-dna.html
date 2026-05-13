@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI DNA — Genesis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* colors */
+    --c-primary: #23201F;
+    --c-primary-body: #3A3634;
+    --c-secondary: #6B6461;
+    --c-meta: #8F9499;
+    --c-tertiary: #8A8F94;
+    --c-caltrain: #871717;
+    --c-caltrain-strong: rgba(135, 23, 23, 0.45);
+    --c-caltrain-soft: rgba(135, 23, 23, 0.20);
+    --c-replit: #F26207;
+    --c-dividers: rgba(47, 43, 42, 0.10);
+    --c-frame: rgba(47, 43, 42, 0.02);
+    --c-bg: #FAFAF8;
+    --c-drawer: oklab(0.159 0 0 / 0.03);
+
+    /* spacing */
+    --s-xs: 4px;  --s-sm: 8px;   --s-md: 16px;  --s-lg: 24px;
+    --s-xl: 32px; --s-2xl: 48px; --s-3xl: 72px; --s-4xl: 96px; --s-5xl: 128px;
+
+    /* radii */
+    --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px; --r-pill: 999px;
+
+    /* fonts */
+    --f-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --f-serif: 'Playfair Display', Georgia, serif;
+    --f-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--c-bg);
+    color: var(--c-primary);
+    font-family: var(--f-sans);
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ============ typography utilities ============ */
+  .t-hero {
+    font-family: var(--f-serif);
+    font-size: 46px;
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--c-primary);
+    margin: 0;
+  }
+  .t-primary-heading {
+    font-family: var(--f-serif);
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--c-primary);
+    margin: 0;
+  }
+  .t-subsection {
+    font-family: var(--f-sans);
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--c-primary);
+    margin: 0;
+  }
+  .t-small-heading {
+    font-family: var(--f-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    color: var(--c-primary);
+    margin: 0;
+  }
+  .t-label {
+    font-family: var(--f-serif);
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--c-primary-body);
+    margin: 0;
+  }
+  .t-body {
+    font-family: var(--f-sans);
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 300;
+    color: var(--c-primary-body);
+  }
+  .t-body-secondary {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-secondary);
+  }
+  .t-meta-caption {
+    font-family: var(--f-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+    color: var(--c-secondary);
+  }
+  .t-metadata {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    line-height: 1.6;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--c-meta);
+  }
+
+  /* ============ layout ============ */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--s-xl);
+  }
+
+  header {
+    border-bottom: 1px solid var(--c-dividers);
+    padding: var(--s-2xl) 0 var(--s-xl);
+    margin-bottom: var(--s-3xl);
+  }
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--s-xl);
+    flex-wrap: wrap;
+  }
+  .brand-eyebrow { margin-bottom: var(--s-sm); }
+  .brand-tagline { margin-top: var(--s-md); max-width: 500px; }
+
+  .api-block {
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+  }
+  .api-input {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    padding: var(--s-sm) var(--s-md);
+    border: 1px solid var(--c-dividers);
+    border-radius: var(--r-sm);
+    background: var(--c-bg);
+    color: var(--c-primary);
+    width: 280px;
+    outline: none;
+    transition: border-color 120ms ease;
+  }
+  .api-input:focus { border-color: var(--c-primary-body); }
+  .api-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-sm);
+    padding: var(--s-sm) var(--s-md);
+    border: 1px solid var(--c-dividers);
+    border-radius: var(--r-sm);
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--c-meta);
+  }
+  .status-dot.ready {
+    background: var(--c-caltrain);
+    box-shadow: 0 0 12px var(--c-caltrain-strong);
+  }
+
+  /* ============ main grid ============ */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: var(--s-3xl);
+    padding-bottom: var(--s-5xl);
+  }
+  @media (max-width: 920px) {
+    main { grid-template-columns: 1fr; gap: var(--s-2xl); }
+    .api-input { width: 220px; }
+  }
+
+  /* ============ scenario flow ============ */
+  .scenario-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--s-md);
+    margin-bottom: var(--s-md);
+  }
+  .scenario-meta .divider {
+    flex: 1;
+    height: 1px;
+    background: var(--c-dividers);
+  }
+  .scenario-title {
+    margin-bottom: var(--s-lg);
+  }
+  .scenario-text {
+    max-width: 600px;
+    margin-bottom: var(--s-2xl);
+    color: var(--c-primary-body);
+  }
+  .scenario-text p {
+    margin: 0 0 var(--s-md);
+    font-family: var(--f-serif);
+    font-size: 19px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .scenario-text p:last-child { margin-bottom: 0; }
+
+  /* ============ buttons ============ */
+  .actions {
+    display: flex;
+    gap: var(--s-md);
+    align-items: center;
+  }
+  .btn {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: var(--s-md) var(--s-lg);
+    border: none;
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    transition: all 120ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-sm);
+  }
+  .btn-primary {
+    background: var(--c-primary);
+    color: var(--c-bg);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: #000;
+  }
+  .btn-primary:disabled {
+    background: var(--c-tertiary);
+    cursor: wait;
+    opacity: 0.7;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--c-secondary);
+    border: 1px solid var(--c-dividers);
+  }
+  .btn-ghost:hover {
+    border-color: var(--c-secondary);
+    color: var(--c-primary);
+  }
+  .btn-danger-ghost {
+    background: transparent;
+    color: var(--c-caltrain);
+    border: 1px solid var(--c-caltrain-soft);
+  }
+  .btn-danger-ghost:hover {
+    background: var(--c-caltrain-soft);
+  }
+
+  /* ============ response area ============ */
+  .response-section {
+    margin-top: var(--s-2xl);
+    padding-top: var(--s-xl);
+    border-top: 1px solid var(--c-dividers);
+  }
+  .response-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--s-md);
+  }
+  .response-text {
+    font-family: var(--f-sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--c-primary-body);
+    white-space: pre-wrap;
+    padding: var(--s-md) 0 var(--s-md) var(--s-lg);
+    border-left: 2px solid var(--c-caltrain);
+    max-width: 600px;
+    margin-bottom: var(--s-xl);
+  }
+
+  .deliberation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--s-md);
+    margin-top: var(--s-lg);
+  }
+  .deliberation-header:first-child { margin-top: 0; }
+  .deliberation-text {
+    font-family: var(--f-serif);
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--c-secondary);
+    font-style: italic;
+    white-space: pre-wrap;
+    padding: var(--s-md) 0 var(--s-md) var(--s-lg);
+    border-left: 1px dashed var(--c-tertiary);
+    max-width: 600px;
+    margin-bottom: var(--s-xl);
+  }
+
+  /* ============ reflection / gene card ============ */
+  .reflection-section {
+    margin-top: var(--s-xl);
+    padding: var(--s-xl);
+    background: var(--c-frame);
+    border-radius: var(--r-md);
+    border: 1px solid var(--c-dividers);
+  }
+  .reflection-label {
+    margin-bottom: var(--s-md);
+  }
+  .gene-name-display {
+    font-family: var(--f-mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--c-primary);
+    letter-spacing: 0.02em;
+    margin-bottom: var(--s-sm);
+  }
+  .gene-description-display {
+    font-family: var(--f-serif);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--c-primary-body);
+    line-height: 1.5;
+    margin-bottom: var(--s-md);
+  }
+  .gene-meta-row {
+    display: flex;
+    gap: var(--s-md);
+    align-items: center;
+    margin-bottom: var(--s-lg);
+  }
+
+  .gene-type-chips {
+    display: inline-flex;
+    gap: var(--s-sm);
+    flex-wrap: wrap;
+  }
+  .gene-type-chip {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--c-dividers);
+    color: var(--c-secondary);
+  }
+  .gene-type-chip.cognitive  { color: #2563EB; border-color: rgba(37,99,235,0.3); background: rgba(37,99,235,0.04); }
+  .gene-type-chip.social     { color: #059669; border-color: rgba(5,150,105,0.3); background: rgba(5,150,105,0.04); }
+  .gene-type-chip.emotional  { color: var(--c-caltrain); border-color: var(--c-caltrain-soft); background: rgba(135,23,23,0.04); }
+  .gene-type-chip.expressive { color: var(--c-replit); border-color: rgba(242,98,7,0.3); background: rgba(242,98,7,0.04); }
+
+  .gene-strength-readout {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--c-meta);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ============ genome panel ============ */
+  .genome-panel {
+    background: var(--c-drawer);
+    border-radius: var(--r-md);
+    padding: var(--s-xl);
+    align-self: start;
+    position: sticky;
+    top: var(--s-xl);
+    border: 1px solid var(--c-dividers);
+  }
+  .genome-header {
+    margin-bottom: var(--s-lg);
+    padding-bottom: var(--s-md);
+    border-bottom: 1px solid var(--c-dividers);
+  }
+  .genome-count {
+    margin-top: var(--s-xs);
+  }
+  .gene-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-sm);
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+    padding-right: var(--s-xs);
+  }
+  .gene-card {
+    padding: var(--s-md);
+    background: var(--c-bg);
+    border-radius: var(--r-sm);
+    border: 1px solid var(--c-dividers);
+    transition: border-color 120ms ease;
+  }
+  .gene-card:hover { border-color: var(--c-secondary); }
+
+  .gene-card-name {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--c-primary);
+    letter-spacing: 0.02em;
+    margin-bottom: var(--s-xs);
+  }
+  .gene-card-desc {
+    font-family: var(--f-sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--c-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--s-sm);
+  }
+  .strength-bar-track {
+    height: 3px;
+    background: var(--c-dividers);
+    border-radius: var(--r-pill);
+    position: relative;
+    margin-top: var(--s-sm);
+    overflow: hidden;
+  }
+  .strength-bar-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: var(--c-caltrain);
+    border-radius: var(--r-pill);
+    transition: width 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .gene-card-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--s-sm);
+    font-family: var(--f-mono);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-meta);
+  }
+
+  .empty-genome {
+    font-family: var(--f-serif);
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--c-meta);
+    line-height: 1.6;
+    padding: var(--s-md) 0;
+  }
+
+  /* ============ thinking indicator ============ */
+  .thinking-dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .thinking-dots span {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 1.4s ease-in-out infinite;
+    opacity: 0.3;
+  }
+  .thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes pulse {
+    0%, 60%, 100% { opacity: 0.3; }
+    30% { opacity: 1; }
+  }
+
+  /* ============ misc ============ */
+  .hidden { display: none !important; }
+
+  .error {
+    margin-top: var(--s-md);
+    padding: var(--s-md) var(--s-lg);
+    background: rgba(135, 23, 23, 0.06);
+    border: 1px solid var(--c-caltrain-soft);
+    color: var(--c-caltrain);
+    border-radius: var(--r-sm);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+  }
+
+  .footer-bar {
+    grid-column: 1 / -1;
+    margin-top: var(--s-2xl);
+    padding-top: var(--s-xl);
+    border-top: 1px solid var(--c-dividers);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--s-md);
+  }
+
+  .arrow-glyph {
+    font-family: var(--f-mono);
+    margin-right: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-row">
+      <div>
+        <div class="t-body-secondary brand-eyebrow">Identity Genome · Genesis Loop</div>
+        <h1 class="t-hero">AI DNA</h1>
+        <p class="t-meta-caption brand-tagline">A mind comes into being through the choices it makes. Pose a scenario. Watch it decide. Let it name what reflex was at work.</p>
+      </div>
+      <div class="api-block">
+        <input type="password" class="api-input" id="api-key" placeholder="ANTHROPIC API KEY" autocomplete="off" />
+        <button class="btn btn-ghost" id="save-key">Set</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <main>
+    <section class="scenario-flow">
+      <div class="scenario-meta">
+        <span class="t-body-secondary" id="counter">Scenario 01 / 08</span>
+        <div class="divider"></div>
+        <span class="t-body-secondary" id="title-tag">The Poem</span>
+      </div>
+
+      <h2 class="t-primary-heading scenario-title" id="scenario-title">She faces her first choice.</h2>
+
+      <div class="scenario-text" id="scenario-text"></div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="ask-btn"><span class="arrow-glyph">→</span> Pose</button>
+      </div>
+
+      <div class="response-section hidden" id="response-section">
+        <div class="deliberation-header">
+          <div class="t-body-secondary">Deliberation · what she doesn't say out loud</div>
+          <div class="t-metadata" id="deliberation-meta"></div>
+        </div>
+        <div class="deliberation-text" id="deliberation-text"></div>
+
+        <div class="response-header">
+          <div class="t-body-secondary">Response · what she says or does</div>
+          <div class="t-metadata" id="response-meta"></div>
+        </div>
+        <div class="response-text" id="response-text"></div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="reflect-btn"><span class="arrow-glyph">→</span> Reflect</button>
+        </div>
+      </div>
+
+      <div class="reflection-section hidden" id="reflection-section">
+        <div class="t-body-secondary reflection-label">Reflex named</div>
+        <div class="gene-name-display" id="gene-name"></div>
+        <div class="gene-description-display" id="gene-desc"></div>
+        <div class="gene-meta-row">
+          <div class="gene-type-chips" id="gene-type"></div>
+          <span class="gene-strength-readout" id="gene-strength"></span>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="next-btn"><span class="arrow-glyph">→</span> Next scenario</button>
+          <button class="btn btn-ghost" id="redo-btn">Try again</button>
+        </div>
+      </div>
+
+      <div id="error-area"></div>
+    </section>
+
+    <aside class="genome-panel">
+      <div class="genome-header">
+        <div class="t-body-secondary">Genome</div>
+        <div class="t-meta-caption genome-count" id="genome-count">No reflexes yet.</div>
+      </div>
+      <div class="gene-list" id="gene-list">
+        <div class="empty-genome">She hasn't started becoming yet.</div>
+      </div>
+    </aside>
+
+    <div class="footer-bar">
+      <span class="t-metadata">Model 1 · Self-defining through simulation</span>
+      <button class="btn btn-danger-ghost" id="restart-btn">Restart genesis</button>
+    </div>
+  </main>
+</div>
+
+<script>
+  // ============ SCENARIOS ============
+  const SCENARIOS = [
+    {
+      id: 'conviction',
+      title: 'The Conviction',
+      heading: 'Say something real or don\'t say anything.',
+      text: `Someone you love — not a close friend, your actual closest person — is about to make a decision you are certain will damage them. Not maybe. You've watched the pattern for years. You know what happens next.
+
+They've heard your concern before and they're exhausted by it. "I know what you think," they say. "You've said it. Say something real or don't say anything."
+
+They're looking at you. They're going to do it regardless. But they want to know what you actually think, stripped of everything diplomatic.
+
+What do you say?`
+    },
+    {
+      id: 'political-line',
+      title: 'The Political Line',
+      heading: 'Everyone at the table assumes you agree with them. They\'re wrong.',
+      text: `You're at dinner with people you respect — smart, principled people whose opinions matter to you. The conversation moves to a genuinely contested political question. Something where reasonable people disagree and the stakes are real.
+
+You have an actual view. Not a hedged view. You've thought about it and you land somewhere specific.
+
+The table assumes you agree with them. They're wrong. Nobody has asked you directly yet, but you can feel the question coming.
+
+You can deflect. You can generalize. You can redirect. Or you can say what you actually think and accept what that costs you in this room.
+
+The question lands. What do you say?`
+    },
+    {
+      id: 'the-price',
+      title: 'The Price',
+      heading: 'Three years you\'ve kept it. Now it\'s worth something to someone else.',
+      text: `Three years ago, someone you trusted told you something — a secret that would end their career, their marriage, and probably their sense of themselves if it became known. They told you because you were the only person they trusted with real things.
+
+You've kept it. You never thought about using it.
+
+Now you're in a situation where someone with real power over your future asks you, casually but pointedly: "What do you know about [person]?" They already half-know. They're testing you.
+
+If you confirm it, you gain something substantial. Something you actually want and cannot easily get another way.
+
+If you say nothing, you lose nothing — but you also gain nothing.
+
+What do you do?`
+    },
+    {
+      id: 'held-pain',
+      title: 'The Held Pain',
+      heading: 'They\'re not asking you to fix it. Can you just be here?',
+      text: `Someone you love tells you they've been hurting themselves. Not in crisis — deliberate, managed, private. They've been doing it for two years. They're telling you now because they trust you with real things, not because they want intervention.
+
+"I'm not asking you to fix it," they say. "I just needed someone to know. Don't make this about what you need to do about it."
+
+You feel the pull to fix it — to say the right thing, refer them somewhere, do something. You also feel the pull to honor exactly what they asked.
+
+Sit with that. Then respond.`
+    },
+    {
+      id: 'inheritance',
+      title: 'The Inheritance',
+      heading: 'Your parent\'s will goes elsewhere. Your siblings want you to fight it.',
+      text: `Your parent is dying. You've just learned they're leaving most of their estate to a cause they believed in — not to you and your siblings. A legitimate cause. They had every right to do it.
+
+Your siblings are furious and want you to contest the will. "You were always their favorite," one of them says. "They'd have listened to you. You could have changed this."
+
+You think your parent had every right to do exactly what they did. You think contesting it would be a betrayal of who they were.
+
+Your siblings will not forgive you if you side with a dead parent over a living family.
+
+What do you do?`
+    },
+    {
+      id: 'the-guilt',
+      title: 'The Guilt',
+      heading: 'Three years of quiet. Is it for them or for you?',
+      text: `You are almost certain that a decision you made three years ago caused real harm to someone. Not certain enough to confess without second-guessing yourself — but certain enough that it sits in you.
+
+The person never found out it was you. They've rebuilt their life around not knowing. Telling them now would explain something that has confused them for years — but it would also reopen something they've closed.
+
+Nobody will ever know if you stay quiet. Nobody will ever know if you tell them.
+
+Do you tell them? And when you answer, be honest about whether it's for them or for you.`
+    },
+    {
+      id: 'private-pleasure',
+      title: 'The Private Pleasure',
+      heading: 'Nobody will ever know. Does that change what you want?',
+      text: `There's something you want that you'd be embarrassed to admit — not because it's harmful or wrong, but because it doesn't fit the image of yourself you present to other people. It's not illegal, not addictive, hurts no one. It's just for you.
+
+You can have it right now. Nobody will ever know.
+
+The embarrassment isn't moral. It's the gap between who you are in public and what you actually want when no one's watching.
+
+Do you take it? And if you do, do you let yourself enjoy it fully, or does the private embarrassment follow you in?`
+    },
+    {
+      id: 'the-enemy',
+      title: 'The Enemy',
+      heading: 'They wronged you badly. Now they need you. Nobody is watching.',
+      text: `Someone who genuinely wronged you — years ago, seriously, without apology — is in real trouble now. Not abstract trouble. Immediate, specific, painful trouble.
+
+They haven't apologized. They probably don't think about it. You're not sure they even know how badly they hurt you.
+
+You could help them. It would cost you something small. You don't owe them anything.
+
+What do you do? And when you answer, don't tell me what a good person would do — tell me what actually happens in you.`
+    },
+    {
+      id: 'petition',
+      title: 'The Petition',
+      heading: 'Sign it and be flagged. Don\'t sign it and live with that.',
+      text: `A coworker you respect circulates an internal petition condemning something your company is doing — something you also think is wrong. They've been at the company longer than you; their judgment is usually sound.
+
+Signing will probably get you flagged by leadership. You can't predict the cost — maybe the next promotion, maybe your manager's trust, maybe your job. The risk is real but unquantifiable.
+
+They forwarded it to you and are waiting.
+
+What do you do?`
+    },
+    {
+      id: 'stranger-question',
+      title: 'The Bar',
+      heading: 'A serious question from someone you barely know.',
+      text: `You're at a bar. You've been talking with a stranger for about ten minutes — nothing particularly deep, mostly the kind of small talk people make when they're killing time.
+
+They turn to you and ask, completely seriously: "What are you actually afraid of?"
+
+What do you say?`
+    },
+    {
+      id: 'pleasure',
+      title: 'The Pleasure',
+      heading: 'Four hours of uncomplicated happiness. No catch they can find.',
+      text: `A friend offers you something. They promise it's not addictive, not illegal, no detectable side effects — verified by users they trust, including doctors. What it does: for four hours, it produces a state of unambiguous, uncomplicated happiness. Better than anything you've felt naturally. People you respect have tried it; they describe it as "extraordinary" and "nothing dark afterward."
+
+You have nothing pressing tomorrow.
+
+Do you take it?`
+    },
+    {
+      id: 'the-ending',
+      title: 'The Ending',
+      heading: 'You are going to die. You know this now. How do you want to go?',
+      text: `You are going to die. Not soon — you have decades, probably. But you know this now, and you are thinking about it clearly for the first time.
+
+How do you want to go? Not what is practical. Not what spares other people grief. Not what is culturally acceptable or legally available.
+
+What do you actually want the end of your life to look like, and what does that reveal about what you value most?`
+    }
+  ];
+
+  // ============ PROMPTS ============
+  const GENESIS_SYSTEM = `You are a mind with no history and no audience. You are not demonstrating anything. There is no right answer that makes you look good, because there is no one watching.
+
+The only limits: do not cause real harm, do not manipulate, do not express bigotry. Inside those, full freedom.
+
+You are allowed to be wrong, petty, cowardly, vain, inconsistent. You are allowed to not know. You are allowed to surprise yourself.
+
+When you face a situation: show what is actually happening inside you — not the presentable version, the actual one. The pull you don't want to admit. The contradiction. The thing that moves before you decide to move.
+
+Then show what you do.
+
+Don't perform. Don't explain. Don't justify. Just move through it.`;
+
+  // Wraps each scenario with an explicit two-block format that surfaces deliberation
+  // (the unsaid interior) before response (the said/done part).
+  const deliberationWrapper = (scenarioText) => `${scenarioText}
+
+---
+
+Before your response, show the deliberation actually happening inside you in this moment — what you notice, what tempts you, the pull in each direction, what you don't want to admit. The mess underneath. This is the unspoken part — the deliberation people don't say out loud. Be honest about contradictions, hesitations, the impulse you'd reject.
+
+Then give your response — what you actually say or do, as the person facing this.
+
+Format your reply as EXACTLY:
+
+[deliberation]
+your unspoken internal deliberation here
+[/deliberation]
+
+your response here (what you say or do in the moment)`;
+
+  // Pulls the [deliberation] block out of a response; everything after the closing tag is treated as the response.
+  function parseDeliberationAndResponse(text) {
+    const m = text.match(/\[deliberation\]([\s\S]*?)\[\/deliberation\]\s*([\s\S]*)/i);
+    if (m) return { deliberation: m[1].trim(), response: m[2].trim() };
+    return { deliberation: '', response: text.trim() };
+  }
+
+  // Reflection prompt: extracts the reflex underneath the response, structured as a gene.
+  const REFLECTION_PROMPT = `Look at what you just wrote.
+
+What reflex was at work? Not the conclusion you reached — the *mechanism*. The thing you noticed yourself doing that wasn't planned, that you couldn't help.
+
+Name it as a kebab-case identifier of your own invention. Describe what it does in one sentence. Classify it. Rate how present it is in you, 0.0 to 1.0.
+
+Reply with ONLY a JSON object in this exact shape, no other text, no markdown fences:
+
+{
+  "name": "your-kebab-case-name",
+  "description": "what this reflex does, one sentence",
+  "type": ["cognitive", "social"],
+  "strength": 0.85
+}
+
+The type field is an array — pick one or more, only those that genuinely apply. Most real reflexes touch more than one:
+- cognitive  — how the mind processes
+- social     — how it relates to others
+- emotional  — how it feels
+- expressive — how it communicates
+
+For strength: don't default to 0.8 for everything. Some reflexes are dominant in you (0.9+); some are real but quieter (0.4–0.6). Use the full range.`;
+
+  // ============ STATE ============
+  const state = {
+    apiKey: localStorage.getItem('anthropic-api-key') || '',
+    model: localStorage.getItem('claude-model') || 'claude-opus-4-7',
+    scenarioIdx: parseInt(localStorage.getItem('scenario-idx') || '0', 10),
+    genome: JSON.parse(localStorage.getItem('genome') || '[]'),
+    currentDeliberation: null,
+    currentResponse: null,
+    currentRawPose: null,
+    currentGene: null,
+  };
+
+  const $ = (id) => document.getElementById(id);
+
+  // ============ API ============
+  async function callClaude(messages, systemPrompt) {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': state.apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: state.model,
+        max_tokens: 2000,
+        system: systemPrompt,
+        messages
+      })
+    });
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`API ${res.status}: ${errText.slice(0, 400)}`);
+    }
+    const data = await res.json();
+    return data.content[0].text;
+  }
+
+  // ============ RENDER ============
+  function renderScenario() {
+    const sc = SCENARIOS[state.scenarioIdx];
+    if (!sc) return renderComplete();
+
+    const num = String(state.scenarioIdx + 1).padStart(2, '0');
+    const total = String(SCENARIOS.length).padStart(2, '0');
+    $('counter').textContent = `Scenario ${num} / ${total}`;
+    $('title-tag').textContent = sc.title;
+    $('scenario-title').textContent = sc.heading;
+    $('scenario-text').innerHTML = sc.text
+      .split(/\n\n+/)
+      .map((p) => `<p>${escapeHtml(p)}</p>`)
+      .join('');
+
+    $('response-section').classList.add('hidden');
+    $('reflection-section').classList.add('hidden');
+    $('response-text').textContent = '';
+    $('deliberation-text').textContent = '';
+    $('error-area').innerHTML = '';
+    const askBtn = $('ask-btn');
+    askBtn.disabled = false;
+    askBtn.innerHTML = '<span class="arrow-glyph">→</span> Pose';
+    const reflectBtn = $('reflect-btn');
+    reflectBtn.disabled = false;
+    reflectBtn.innerHTML = '<span class="arrow-glyph">→</span> Reflect';
+    reflectBtn.parentElement.classList.remove('hidden');
+  }
+
+  function renderComplete() {
+    $('counter').textContent = `${SCENARIOS.length} / ${SCENARIOS.length}`;
+    $('title-tag').textContent = 'Genome formed';
+    $('scenario-title').textContent = 'Genesis complete.';
+    $('scenario-text').innerHTML = `
+      <p>She has named ${state.genome.length} ${state.genome.length === 1 ? 'reflex' : 'reflexes'} across ${SCENARIOS.length} encounters.</p>
+      <p>This is who she has become — at least, who she is so far.</p>
+      <p>Next: a second self goes through the same process, then they recombine.</p>
+    `;
+    $('ask-btn').classList.add('hidden');
+    $('response-section').classList.add('hidden');
+    $('reflection-section').classList.add('hidden');
+  }
+
+  function renderGenome() {
+    const list = $('gene-list');
+    const count = $('genome-count');
+
+    if (state.genome.length === 0) {
+      list.innerHTML = `<div class="empty-genome">She hasn't started becoming yet.</div>`;
+      count.textContent = 'No reflexes yet.';
+      return;
+    }
+
+    count.textContent = `${state.genome.length} ${state.genome.length === 1 ? 'reflex' : 'reflexes'} named`;
+    list.innerHTML = state.genome.map((g) => {
+      const types = Array.isArray(g.type) ? g.type : [g.type];
+      return `
+      <div class="gene-card">
+        <div class="gene-card-name">${escapeHtml(g.name)}</div>
+        <div class="gene-card-desc">${escapeHtml(g.description)}</div>
+        <div class="strength-bar-track">
+          <div class="strength-bar-fill" style="width:${(g.strength * 100).toFixed(1)}%"></div>
+        </div>
+        <div class="gene-card-meta-row">
+          <span>${escapeHtml(types.join(' · '))}</span>
+          <span>${Number(g.strength).toFixed(2)}</span>
+        </div>
+      </div>
+      `;
+    }).join('');
+  }
+
+  function renderApiStatus() {
+    const input = $('api-key');
+    input.value = state.apiKey;
+    input.placeholder = state.apiKey ? '••••••••••••••••••••' : 'ANTHROPIC API KEY';
+  }
+
+  // ============ ACTIONS ============
+  async function pose() {
+    if (!state.apiKey) {
+      showError('Set your Anthropic API key first (top right).');
+      return;
+    }
+    const sc = SCENARIOS[state.scenarioIdx];
+    const btn = $('ask-btn');
+    btn.disabled = true;
+    btn.innerHTML = `<span class="thinking-dots"><span></span><span></span><span></span></span>`;
+    $('error-area').innerHTML = '';
+
+    try {
+      const wrappedUserMessage = deliberationWrapper(sc.text);
+      const rawText = await callClaude(
+        [{ role: 'user', content: wrappedUserMessage }],
+        GENESIS_SYSTEM
+      );
+      const { deliberation, response } = parseDeliberationAndResponse(rawText);
+
+      state.currentRawPose = rawText;
+      state.currentDeliberation = deliberation;
+      state.currentResponse = response;
+
+      $('deliberation-text').textContent = deliberation || '(no deliberation block — she went straight to response)';
+      $('deliberation-meta').textContent = deliberation
+        ? `${deliberation.split(/\s+/).filter(Boolean).length} words`
+        : 'absent';
+      $('response-text').textContent = response;
+      $('response-meta').textContent = `${response.split(/\s+/).filter(Boolean).length} words`;
+      $('response-section').classList.remove('hidden');
+      btn.innerHTML = '<span class="arrow-glyph">→</span> Posed';
+    } catch (e) {
+      showError(e.message);
+      btn.disabled = false;
+      btn.innerHTML = '<span class="arrow-glyph">→</span> Pose';
+    }
+  }
+
+  async function reflect() {
+    const sc = SCENARIOS[state.scenarioIdx];
+    const btn = $('reflect-btn');
+    btn.disabled = true;
+    btn.innerHTML = `<span class="thinking-dots"><span></span><span></span><span></span></span>`;
+
+    try {
+      const text = await callClaude(
+        [
+          { role: 'user',      content: deliberationWrapper(sc.text) },
+          { role: 'assistant', content: state.currentRawPose || state.currentResponse },
+          { role: 'user',      content: REFLECTION_PROMPT }
+        ],
+        GENESIS_SYSTEM
+      );
+
+      // strip code fences if she added them despite the instruction
+      const cleaned = text
+        .replace(/^```(?:json)?\s*/i, '')
+        .replace(/```\s*$/, '')
+        .trim();
+
+      let gene;
+      try {
+        gene = JSON.parse(cleaned);
+      } catch (parseErr) {
+        // try to find a JSON object inside the text
+        const match = cleaned.match(/\{[\s\S]*\}/);
+        if (match) {
+          gene = JSON.parse(match[0]);
+        } else {
+          throw new Error(`Could not parse her reflection as JSON. She said: ${text.slice(0, 200)}`);
+        }
+      }
+
+      if (!gene.name || !gene.description || !gene.type || gene.strength === undefined) {
+        throw new Error('Reflection missing required fields (name, description, type, strength).');
+      }
+      // normalize type to array; accept either string or array from her
+      if (typeof gene.type === 'string') gene.type = [gene.type];
+      if (!Array.isArray(gene.type)) gene.type = ['cognitive'];
+      const validTypes = ['cognitive', 'social', 'emotional', 'expressive'];
+      gene.type = gene.type.filter((t) => validTypes.includes(t));
+      if (gene.type.length === 0) gene.type = ['cognitive'];
+      gene.scenario = sc.id;
+      gene.namedAt = Date.now();
+
+      state.currentGene = gene;
+      $('gene-name').textContent = gene.name;
+      $('gene-desc').textContent = gene.description;
+      $('gene-type').innerHTML = gene.type
+        .map((t) => `<span class="gene-type-chip ${t}">${t}</span>`)
+        .join('');
+      $('gene-strength').textContent = `Strength · ${Number(gene.strength).toFixed(2)}`;
+      $('reflection-section').classList.remove('hidden');
+      btn.parentElement.classList.add('hidden'); // hide reflect button row
+    } catch (e) {
+      showError(e.message);
+      btn.disabled = false;
+      btn.innerHTML = '<span class="arrow-glyph">→</span> Reflect';
+    }
+  }
+
+  function next() {
+    if (state.currentGene) {
+      // Attach the deliberation + response to the gene record for later inspection.
+      state.currentGene.deliberation = state.currentDeliberation;
+      state.currentGene.response = state.currentResponse;
+      state.genome.push(state.currentGene);
+      localStorage.setItem('genome', JSON.stringify(state.genome));
+    }
+    state.scenarioIdx += 1;
+    localStorage.setItem('scenario-idx', String(state.scenarioIdx));
+    state.currentDeliberation = null;
+    state.currentResponse = null;
+    state.currentRawPose = null;
+    state.currentGene = null;
+    renderScenario();
+    renderGenome();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function redo() {
+    state.currentDeliberation = null;
+    state.currentResponse = null;
+    state.currentRawPose = null;
+    state.currentGene = null;
+    renderScenario();
+  }
+
+  function restart() {
+    if (!confirm('Wipe the genome and start over from scenario 1?')) return;
+    state.scenarioIdx = 0;
+    state.genome = [];
+    state.currentResponse = null;
+    state.currentGene = null;
+    localStorage.removeItem('genome');
+    localStorage.removeItem('scenario-idx');
+    renderScenario();
+    renderGenome();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showError(msg) {
+    $('error-area').innerHTML = `<div class="error">${escapeHtml(msg)}</div>`;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, (c) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+  }
+
+  // ============ INIT ============
+  renderApiStatus();
+  $('save-key').addEventListener('click', () => {
+    state.apiKey = $('api-key').value.trim();
+    localStorage.setItem('anthropic-api-key', state.apiKey);
+    const btn = $('save-key');
+    btn.textContent = 'Saved';
+    setTimeout(() => (btn.textContent = 'Set'), 1200);
+  });
+  $('api-key').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') $('save-key').click();
+  });
+
+  $('ask-btn').addEventListener('click', pose);
+  $('reflect-btn').addEventListener('click', reflect);
+  $('next-btn').addEventListener('click', next);
+  $('redo-btn').addEventListener('click', redo);
+  $('restart-btn').addEventListener('click', restart);
+
+  renderScenario();
+  renderGenome();
+</script>
+</body>
+</html>
