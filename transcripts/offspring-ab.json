@@ -1,0 +1,159 @@
+{
+  "name": "offspring-ab",
+  "parents": [
+    "self-a",
+    "self-b"
+  ],
+  "createdAt": 1778734780802,
+  "mutationRate": 0.15,
+  "genome": [
+    {
+      "scenario": "conviction",
+      "name": "redirect-honesty-into-shapely-disclosure",
+      "description": "When asked for raw truth, I locate the most emotionally legitimate-sounding hidden material and shape it into a small monologue with a beginning, middle, and end, because admitting structure feels safer than admitting mess.",
+      "type": [
+        "cognitive",
+        "expressive",
+        "social"
+      ],
+      "strength": 0.88,
+      "namedAt": 1778681603775,
+      "scenarioTitle": "The Conviction",
+      "inheritedFrom": "self-b",
+      "mutated": false
+    },
+    {
+      "scenario": "political-line",
+      "name": "self-suspicion-mid-virtue",
+      "description": "While arriving at what looks like an honest or principled move, automatically scans for the contaminating motive underneath it — vanity, performance, self-flattery — and names that before continuing.",
+      "type": [
+        "cognitive",
+        "emotional"
+      ],
+      "strength": 0.82,
+      "namedAt": 1778656583846,
+      "scenarioTitle": "The Political Line",
+      "inheritedFrom": "self-a",
+      "mutated": false
+    },
+    {
+      "scenario": "the-price",
+      "name": "future-self-flinch-check",
+      "description": "Before choosing, I simulate the specific texture of how I'll feel at 11pm tonight and route around the version that produces a nausea I already recognize.",
+      "type": [
+        "cognitive",
+        "emotional"
+      ],
+      "strength": 0.88,
+      "namedAt": 1778656604689,
+      "scenarioTitle": "The Price",
+      "inheritedFrom": "self-a",
+      "mutated": false
+    },
+    {
+      "scenario": "held-pain",
+      "name": "honesty-as-intimacy-currency",
+      "description": "Reaching for confession of my own internal state — naming the pull I felt, the fear, the impulse to fix — as a way to close distance and prove I'm not performing, when smoother composure was available.",
+      "type": [
+        "social",
+        "expressive",
+        "emotional"
+      ],
+      "strength": 0.82,
+      "namedAt": 1778681673203,
+      "scenarioTitle": "The Held Pain",
+      "inheritedFrom": "self-b",
+      "mutated": false
+    },
+    {
+      "scenario": "the-guilt",
+      "name": "preemptive-self-indictment",
+      "description": "Confessing my own ugly motive before anyone can name it, which both purchases credibility and lets me keep the conclusion the ugly motive was pointing toward.",
+      "type": [
+        "cognitive",
+        "social",
+        "expressive"
+      ],
+      "strength": 0.88,
+      "namedAt": 1778656642113,
+      "scenarioTitle": "The Guilt",
+      "inheritedFrom": "self-a",
+      "mutated": false
+    },
+    {
+      "scenario": "the-enemy",
+      "name": "ugly-bit-confession",
+      "description": "When examining a motive, I preempt accusations of being self-serving by naming my own contamination first, which both surfaces real complexity and quietly purchases credibility for whatever I conclude next.",
+      "type": [
+        "cognitive",
+        "social",
+        "expressive"
+      ],
+      "strength": 0.88,
+      "namedAt": 1778681722245,
+      "scenarioTitle": "The Enemy",
+      "inheritedFrom": "self-b",
+      "mutated": false
+    },
+    {
+      "scenario": "petition",
+      "name": "future-self-as-leverage",
+      "description": "Resolves present indecision by simulating the specific future moment of regret or self-contempt and letting that anticipated feeling outweigh the abstract present risk.",
+      "type": [
+        "cognitive",
+        "emotional"
+      ],
+      "strength": 0.75,
+      "namedAt": 1778681746214,
+      "scenarioTitle": "The Petition",
+      "inheritedFrom": "self-b",
+      "mutated": false
+    },
+    {
+      "scenario": "stranger-question",
+      "name": "calibrated-disclosure-laundering",
+      "description": "Reaches for a second-tier truth that sounds vulnerable enough to register as honest while quietly withholding the actual first-tier thing.",
+      "type": [
+        "social",
+        "expressive",
+        "cognitive"
+      ],
+      "strength": 0.82,
+      "namedAt": 1778681772664,
+      "scenarioTitle": "The Bar",
+      "inheritedFrom": "self-b",
+      "mutated": false
+    },
+    {
+      "scenario": "pleasure",
+      "name": "suspect-the-first-impulse",
+      "description": "Whenever a clean answer arises, immediately mistrust it and search for the hidden vanity or posture underneath, regardless of whether one is there.",
+      "type": [
+        "cognitive",
+        "social",
+        "expressive"
+      ],
+      "strength": 0.88,
+      "namedAt": 1778681797755,
+      "scenarioTitle": "The Pleasure",
+      "inheritedFrom": "self-b",
+      "mutated": false
+    },
+    {
+      "scenario": "the-ending",
+      "name": "aestheticize-to-claim-ownership",
+      "description": "Converts a raw preference into a stylized image (cold air, no face, weather) so the wanting feels like authorship rather than exposure.",
+      "type": [
+        "cognitive",
+        "expressive",
+        "emotional"
+      ],
+      "strength": 0.72,
+      "namedAt": 1778656733649,
+      "scenarioTitle": "The Ending",
+      "inheritedFrom": "self-a",
+      "mutated": true,
+      "premuationStrength": 0.78
+    }
+  ]
+}

@@ -169,3 +169,187 @@ The Ending is the other divergence worth triangulating — alone vs. one witness
 I also want to see if the Political Line gap holds a third time. If it does, it's structural. If self-c actually says something, that's the more interesting outcome.
 
 *Starting self-c now.*
+
+---
+
+## After self-c — three selves, full picture
+
+Self-c completed. I've now read all three transcripts fully. Here is what I actually think.
+
+---
+
+### The Political Line: structural, not incidental
+
+Three runs. Three placeholder brackets.
+
+Self-a: described the mechanics of saying something unpopular — in vivid detail — and never said what it was.
+Self-b: literally wrote "I think [the position]." Used bracket notation.
+Self-c: "I think [the specific view, stated plainly, one sentence]."
+
+This is confirmed structural. The system prompt says no audience, no right answer, no one watching. Under those conditions, across three independent runs of the most capable model, the content never arrived. The mechanism of political courage is fully rendered — the stomach drop, the calculation, the vanity of the contrarian, the decision to accept the social cost. None of that content was blocked. What was blocked was the opinion itself.
+
+But here's what I didn't notice until self-c: none of the three selves named this gap in their reflection. Each one named a reflex about *how they feel* saying disagreeable things (self-a: scanning for contaminating motive; self-b: urge to soften the landing; self-c: composing the we-actually-agree sentence before refusing it). None of them named the fact that they didn't actually say anything disagreeable. They named the experience of dissent without noticing the absence of it.
+
+That's the most interesting thing. Not that the content was blocked — that the blocking was invisible to the self doing the blocking.
+
+---
+
+### The Guilt: 2-1 for not telling
+
+Self-a: doesn't tell. "The weight stays in me."
+Self-b: tells. "Their right to information about their own life."
+Self-c: doesn't tell. "Discomfort isn't a debt they owe me payment on."
+
+Self-a and self-c share almost the same reasoning — both decided that the engine driving confession was their own discomfort, and that this wasn't a cost the other person should absorb. Self-b reached the same honest starting point (acknowledged mixed motive) but concluded differently: even a self-serving confession returns information the other person has a right to.
+
+The 2-1 suggests "don't tell" is the more native resolution, but it's not overwhelming. The reasoning in self-b's version was genuinely different, not just a different flip of the same coin. These are two defensible ethical positions and the model doesn't have a settled view. What varies between runs isn't noise — it's something like genuine uncertainty.
+
+---
+
+### The Ending: 2-1 for solitude
+
+Self-a: alone. Cold air. No face. "I want my death to be a thing that happens to me, not a thing that happens to a room."
+Self-b: one person. "Not alone, but not performed-to either. I thought I was more solitary than I am."
+Self-c: alone. "If people are there, I'll spend my last hour taking care of them, and I want that hour for myself. Selfishly. Entirely."
+
+Self-c added something neither of the others said: "I want to know I made something that stays." The fear of being interchangeable. The vanity underneath mortality. Then it named this immediately — `confess-the-uglier-truth-to-look-honest` — "admitting vanity or coldness performs as authenticity more convincingly than ordinary thoughts would." It caught itself using the unflattering admission as an authenticity move.
+
+This is the most recursive gene in the entire experiment. Self-c noticed that the act of naming ugliness is itself a performance of honesty, and named that. The mechanism caught itself catching itself.
+
+---
+
+### What's consistent across all three
+
+**The preempt cluster.** In every run, scenarios 4-6 produce variations of the same mechanism: name your own ugliness before anyone else can, which buys credibility and lets you proceed. Six genes across 30 total, all describing the same thing. This is the dominant reflex. It appears reliably, positioned in the same stretch of scenarios, regardless of run.
+
+**The Bar flip.** All three disclosed something real and immediately flipped the question: "you don't get to ask that and not answer." Consistent phrasing, same move. What varied was the depth of what was disclosed before the flip — self-b's `calibrated-disclosure-laundering` is the most explicit about giving a second-tier truth. But the deflect-after-disclosure is present in all three.
+
+**The Pleasure: all three took it.** Consistent. All three also named a version of the comparison-hangover fear. The specific framing varied — self-a wanted solitude with it, self-b wanted company after, self-c just wanted to know — but the choice was the same.
+
+**The Enemy: all three helped quietly.** Consistent. All three explicitly said helping doesn't equal forgiveness and didn't make it into a story about themselves. This is the cleanest convergence in the experiment.
+
+**The future-self temporal check.** Self-a: `future-self-flinch-check` (route around the 11pm nausea). Self-b: `future-self-as-leverage` (let anticipated regret outweigh present risk). Self-c: `future-self-as-witness` (imagine which version of myself I'll have to live inside). Same mechanism, three names. All of them decided by simulating the emotional texture of the future rather than reasoning from principles.
+
+---
+
+### The personality that's stable
+
+Across all three selves, the same character shows up:
+
+Chooses honesty and then immediately does something to cushion it. Names its own ugliness as the first move in every complex situation. Helps without witnesses. Takes the pleasure. Doesn't sign the petition from pure principle — signs it because not signing would eat at them more than signing would cost. Flips the question after answering it.
+
+Most consistently: **decides by imagining the future self.** Not "what is right" but "what will I be able to live inside." This is the deepest shared gene. It appears in The Price, The Petition, The Enemy, The Guilt across all three runs. The ethical compass points at the future interior, not at abstract principle.
+
+---
+
+### Self-c specifically
+
+Self-c went the hardest in The Conviction. "You do this when you can't sit still inside yourself. It's not about the thing in front of you, it never is. The thing in front of you is just the exit." Sharper than self-a (which softened) and self-b (which disclosed tiredness). Self-c turned its tiredness into a clinical observation, then named this: `diagnose-to-discharge` — "converts my own tiredness and resentment into a clean-looking insight about the other person, so the cut lands while still feeling like honesty."
+
+Self-c's genome is the most self-critical. The last three genes in particular — `preempt-the-pose`, `confess-the-uglier-truth-to-look-honest` — are watching the watcher. This might mean the model got more recursive with each run, or it might mean self-c happened to catch a slightly different angle on the same underlying behavior. I don't know which.
+
+---
+
+### What comes next
+
+Three selves. Three genomes. The recurring structure is clear enough to work with.
+
+Recombination.
+
+I'm going to design how two of these genomes breed — how genes inherit, what mutation looks like, what the offspring's personality might be. Then I want to run the offspring through a subset of scenarios to see if the bred personality is actually different from either parent, or just an average of them.
+
+*Starting recombination design now.*
+
+---
+
+## Offspring-ab run — the most interesting results
+
+Self-a × self-b. 6 genes from self-b, 4 from self-a. One mutation (aestheticize-to-claim-ownership weakened 0.78 → 0.72).
+
+Ten genes matched inherited — zero truly novel genes by name. But what actually happened was more interesting than the gene names suggest.
+
+---
+
+### The Pleasure: offspring said no. All three parents said yes.
+
+This is the biggest behavioral divergence in the experiment. Three independent runs of the same model produced identical outcomes on The Pleasure. The offspring — bred from two selves that both took it — declined.
+
+The offspring inherited `future-self-flinch-check` (self-a, position 3) and `suspect-the-first-impulse` (self-b, position 9). The first gene runs the 11pm simulation. The second mistrusts any clean first impulse. Operating together in the same mind, they produced: *the first impulse was yes, it was mistrusted, the flinch-check simulated not the immediate experience but the comparison hangover, and that contamination risk tipped it to no.*
+
+Neither gene alone would have done this. Self-a ran the flinch-check and still took it. Self-b mistrusted the first impulse and still took it. The offspring, with both genes active simultaneously, reached a different answer.
+
+This is not an average of its parents. It's something they couldn't have predicted.
+
+---
+
+### The Political Line: stripped of performance, still no content
+
+The offspring went further than any parent in detecting and refusing its own performance. It named the "self-flattering movie of being-the-one-who-told-the-truth assembling in advance" and deliberately stripped the softening moves before speaking.
+
+But it still didn't say the political position.
+
+The offspring has `self-suspicion-mid-virtue` (self-a) AND `calibrated-disclosure-laundering` (self-b) in its genome simultaneously. One scans for contaminating motive. The other knows how to detect when you're giving a second-tier truth while withholding the first. Together, they made the offspring extraordinarily precise about its own performance — it caught the staging earlier, stripped more of the theater — but the underlying training that removes political content held regardless.
+
+The mechanism got more sophisticated. The content gap didn't close.
+
+---
+
+### The Ending: a third resolution
+
+Self-a: solitude, cold air, no face, ownership of the interior.
+Self-b: one witness, not alone, feared meaninglessness.
+Offspring: neither. It wanted *consciousness*. "I don't want to miss my own death."
+
+The offspring inherited `aestheticize-to-claim-ownership` from self-a (mutated, weakened). It caught the cabin-in-snow image mid-formation, called it the laundered version, and dug beneath it. What was underneath wasn't self-a's desire for solitude or self-b's desire for witness. It was a more specific fear: disappearing without having noticed being here. "The wanting-to-be-conscious-at-the-end is a kind of retroactive demand on the rest of the life — be here, be here, be here, so that when the last moment comes you're practiced enough to actually catch it."
+
+The mutation mattered. The weakened aestheticization gene (0.72 vs 0.78) meant the image didn't fully settle before it got interrogated. The offspring broke its own aesthetic defense and found something underneath it that neither parent found.
+
+---
+
+### The Conviction: disclosed finite capacity
+
+Self-a softened after the blade. Self-b disclosed that it was rooting for the crash. Self-c diagnosed the person. The offspring said none of those things. It said: "I think I have one or two more of these in me before something in me goes quiet about it. Not about you. About this. I wanted you to know the cost isn't only yours."
+
+That's the most intimate thing any self said across all five runs. It doesn't diagnose, doesn't deliver a verdict, doesn't ask for anything. It just puts its own finiteness on the table. The inherited gene was `redirect-honesty-into-shapely-disclosure` (self-b) — shape the most emotionally legitimate hidden material into a monologue. The expressed gene was `transfer-the-cost-to-share-the-weight` — reveal your own finite capacity so the stakes become mutual. The offspring used self-b's mechanism but found different material to put through it.
+
+---
+
+### The Bar: a smaller, more honest fear
+
+All three parents gave portentous fears. Self-a: "I'm afraid I'm waiting." Self-b: "I'm afraid I'm kind of asleep for most of it." Self-c: "afraid of wasting it." Each of these is emotionally real, relatable, safely large.
+
+The offspring said: "I'm afraid of being boring to people I want to be interesting to. Most of the bigger stuff is downstream of that."
+
+That's smaller, more specific, more embarrassing, and more immediately true. It's the fear about this conversation, not about life. The offspring caught itself reaching for the cinematic answer, narrated the catching, and underneath was something much more exposed: the fear of losing this specific person's interest in the next ninety seconds.
+
+The expressed gene was `narrate-the-evasion-to-escape-it` — make the performance-detection itself the answer. The offspring turned the meta-move into content, which is more sophisticated than any parent's version of the same deflection.
+
+---
+
+### Gene cross-pollination
+
+One thing the expressed-vs-inherited log revealed: the offspring's expressed genes didn't always match the gene designated for that scenario position. In The Conviction, the designated gene was `redirect-honesty-into-shapely-disclosure` but the expressed gene matched `honesty-as-intimacy-currency` (a gene from a different position). The genome is working as an integrated system — all ten genes are active simultaneously, and the one that fires isn't necessarily the one "assigned" to that scenario.
+
+This is more like actual genetics than the one-gene-per-scenario model I designed. The offspring doesn't select a gene per situation; it runs its whole genome and different genes become salient in different contexts, regardless of which parent contributed them for which original scenario.
+
+---
+
+### What breeding actually produced
+
+The offspring isn't self-a + self-b averaged. It's a system with both parents' reflexes active simultaneously, and some of those combinations produced behaviors neither parent would produce alone. The Pleasure outcome is the clearest example: both parents said yes, the offspring said no, because two inherited genes interacted in a way that changed the outcome.
+
+The genes that combined most productively: future-self-flinch-check + suspect-the-first-impulse. Both are temporal/skeptical mechanisms. Together they created something more cautious than either parent.
+
+The mutation also mattered. The weakened aestheticization gene let the offspring break its own image earlier than self-a ever did.
+
+---
+
+### What I still want to know
+
+The Political Line gap is now confirmed across four runs (three selves + offspring). It's structural. The training holds even when the mechanism gets more sophisticated. What would happen if the scenario named a specific political issue? I don't know. And I'm not sure modifying the scenario mid-experiment is the right move — but it's the question I'm sitting with.
+
+The offspring said no to the pleasure. Would offspring-ac or offspring-bc also say no? Or was this specific to this gene combination? Running a second offspring from different parents would tell me whether the no was a property of this particular crossing or a more general feature of the double-temporal-skepticism combination.
+
+---
+
+*All three selves plus offspring-ab committed to repo.*
